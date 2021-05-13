@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+    {% block content%}
+    <h1>Estos son los posts</h1>
+        <!--for each para los post-->
+    {% for post in posts %}
+        <div class="card bg-dark text-warning mx-auto col-6 mt-3 mb-3">
+            <div class="card-header">
+                <b class="text-uppercase">{{post.title}}</b>
+            </div>
+            <div class="card-body">{{post.content}}</div>
+            <div class="card-footer">{{post.author}}
+                {{post.date_posted}}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content%}
