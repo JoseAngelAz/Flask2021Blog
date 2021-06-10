@@ -5,3 +5,80 @@ https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog/03-
 para crear un hash importamos secrets y usamos token_hex:
 >>>import secrets
 >>>secrets.token_hex(16)
+
+Para crear la DB :
+>>> from flaskblog import db 
+>>> db.create_all()
+
+>>> from flaskblog import User, Post
+sembrar una query:
+user_1 = User(username = 'Luna Rivera', email='luna@email.com', password='admin')
+db.session.add(user_1)
+user_2 = User(username = 'Angel Azucena', email='AngelAzucena@email.com', password='admin')
+db.session.add(user_2)
+user_3 = User(username = 'Otto Luna', email='OttoMoon@email.com', password='admin')
+db.session.add(user_3)
+db.session.commit()
+
+llamarlos en un query:
+>>>User.query.all()/trae todo de la tabla
+>>>User.query.first()/trae el primer elemento de la tabla
+User('Luna Rivera',luna@email.com','admin')
+>>>User.query.filter_by(username='Angel Azucena').all()/trae todos los que tengan como username a Angel Azucena
+>>>User.query.filter_by(username='Angel Azucena').first()/trae al primero que tenga como username a Angel Azucena
+>>> user = User.query.filter_by(username='Angel Azucena').first()/guarda en la variable user al usuario pedido con el query
+>>> user 
+User('Angel Azucena', 'AngelAzucena@email.com', 'admin')
+>>>user.id/trae el id que contenga el User en la variable user
+1
+>>>user = User.query.get(1)/ asigna a user el User consiguiendo el id 1
+>>>user 
+User('Luna Rivera',luna@email.com','admin')
+
+Asi tambien podemos pedir los post pero vendran vacios ya que no tienen nada por el momento:
+>>>user.post 
+[] /regresa un array de los posts del User con el id 1
+
+Agregar unos Post al user(que en este caso es User = 1, osea Luna Rivera)
+>>>user.id
+1
+>>>post_1 = Post(title='Blog title 1', content='Primer contenido del Post!', user_id=user.id)
+>>>post_2 = Post(title='Blog title 2', content='Segundo contenido del Post!', user_id=user.id)
+>>>db.session.add(post_1)
+>>>db.session.add(post_2)
+>>>db.session.commit()
+ver los post
+user.posts
+[Post('Blog 1','2021-10-06', 00:01:28.123456),Post('Blog 2','2021-10-06', 00:01:28.345678)]
+
+imprimir solo los post
+>>>for post in user.post:
+... print(post.title)
+...
+Blog 1
+Blog 2
+>>>
+
+>>>post = Post.query.first()/asigna en var post el primer post
+>>> post / imprime lo guardado en la variable post, osea el primer post
+Post('Blog 1','2021-10-06', 00:01:28.123456)
+
+saber el id del usuario al que pertenece el post
+>>>post.user_id
+1/ es el id de User al que pertenece ese Post
+
+saber el autor del post
+>>>post.author
+User('Luna Rivera',luna@email.com','admin')
+BORRAR LA DB
+>>> db.drop_all()
+CREAR DB DE NUEVO
+>>> db.create_all()
+Revisar si esta vacia la db de Users nueva
+>>>User.query.all()
+[]/devuelve un array vacio ya que la tabla no contiene nada
+Revisar si esta vacia la db de Post nueva
+>>>Post.query.all()
+[]/devuelve un array vacio ya que la tabla no contiene nada
+
+Vamos iniciando la parte 5 del curso
