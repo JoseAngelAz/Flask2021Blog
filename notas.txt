@@ -1,6 +1,7 @@
 me quede en la parte 3, 
 voy para la 4 y por el momento falla el formulario de login
-
+link de proyecto original:
+https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog/03-Forms-and-Validation
 para crear un hash importamos secrets y usamos token_hex:
 >>>import secrets
 >>>secrets.token_hex(16)
