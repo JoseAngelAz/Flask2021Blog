@@ -64,3 +64,8 @@ a .article-title:hover{
     font-size: 1.5rem;
 }
 */
+
+body{
+    background: #f5eded;
+    color: #333333;    
+}

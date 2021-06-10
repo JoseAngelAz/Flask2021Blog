@@ -1,1 +1,6 @@
-me quede en la parte 3, voy para la 4 y por el momento falla el formulario de login
+me quede en la parte 3, 
+voy para la 4 y por el momento falla el formulario de login
+
+para crear un hash importamos secrets y usamos token_hex:
+>>>import secrets
+>>>secrets.token_hex(16)
